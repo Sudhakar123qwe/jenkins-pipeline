@@ -3,7 +3,7 @@
 FROM nginx:latest
 
 # Adding custom index.html hosted on Github Gist
-ADD https://raw.githubusercontent.com/Sudhakar123qwe/jenkins-pipeline/main/index.html /usr/share/nginx/html/
+COPY https://raw.githubusercontent.com/Sudhakar123qwe/jenkins-pipeline/main/index.html /usr/share/nginx/html/
 
 # Adding read permissions to custom index.html
 RUN chmod +r /usr/share/nginx/html/index.html
