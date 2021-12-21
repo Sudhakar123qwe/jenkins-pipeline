@@ -15,6 +15,7 @@ spec:
     spec:
       containers:
       - image: sudhakar678/nginx-demo:latest
+        imagePullPolicy: Always
         name: guestbook-ui
         ports:
         - containerPort: 80
