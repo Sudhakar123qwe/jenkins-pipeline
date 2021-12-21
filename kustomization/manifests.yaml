@@ -29,7 +29,7 @@ spec:
         run: nginx
     spec:
       containers:
-      - image: sudhakar678/nginx-demo:latest
+      - image: sudhakar678/nginx-demo:v1
         imagePullPolicy: Always
         name: nginx
         ports:
