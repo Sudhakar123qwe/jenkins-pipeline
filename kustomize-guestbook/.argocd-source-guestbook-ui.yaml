@@ -1,3 +1,0 @@
-kustomize:
-  images:
-  - sudhakar678/nginx-demo:0.1
