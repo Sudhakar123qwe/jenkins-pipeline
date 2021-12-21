@@ -3,7 +3,6 @@ kind: Kustomization
 
 images:
 - name: sudhakar678/nginx-demo:latest
-  newTag: 7.0.0
 
 resources:
 - guestbook-ui-deployment.yaml
