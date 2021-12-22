@@ -1,0 +1,52 @@
+pipeline {
+  agent {
+    kubernetes {
+      yaml '''
+        apiVersion: v1
+        kind: Pod
+        spec:
+          containers:
+          - name: ubuntu
+            image: ubuntu:latest
+            command:
+            - cat
+            tty: true
+          - name: docker
+            image: docker:latest
+            command:
+            - cat
+            tty: true
+            volumeMounts:
+             - mountPath: /var/run/docker.sock
+               name: docker-sock
+          volumes:
+          - name: docker-sock
+            hostPath:
+              path: /var/run/docker.sock    
+        '''
+    }
+  }
+  stages {
+    stage('clone') {
+      steps {
+        container('ubuntu') {
+          git branch: 'main', changelog: false, poll: false, url: 'https://github.com/Sudhakar123qwe/jenkins-pipeline.git'
+        }
+      }
+    }
+    stage('Build-docker-image') {
+      steps {
+        container('docker') {
+          sh 'docker build -t sudhakar678/nginx-demo:v1 .'
+        }
+      }
+    }
+     stage('Pushing-Image-to-Dockerhub') {
+      steps {
+        container('docker') {
+          sh 'docker push sudhakar678/nginx-demo:v1'
+      }
+    }
+     }
+  }
+}
