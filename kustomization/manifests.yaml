@@ -29,7 +29,7 @@ spec:
         run: nginx
     spec:
       containers:
-      - image: sudhakar678/nginx-demo:1.0
+      - image: gcr.io/crafty-tracker-328211/getting-started:latest
         imagePullPolicy: Always
         name: nginx
         ports:
