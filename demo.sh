@@ -1,0 +1,3 @@
+#!/bin/absh
+
+echo "$TAG"
