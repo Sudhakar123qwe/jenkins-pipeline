@@ -1,3 +1,3 @@
 #!/bin/absh
 
-echo "$TAG"
+echo "$(git rev-parse --short "$GITHUB_SHA")"
